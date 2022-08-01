@@ -1,12 +1,15 @@
 import { Table, TableCell, TableHead, TableRow } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
+import { appleApi } from "../helpers/Const";
+import { AdminContext } from "../Context/AdminProvider";
 
 function MacPage() {
   return (
-    <div className="">
+    <div className="mac-add-page">
       <Container>
-        <h2>MacBook</h2>
+        <h2>Добавить товары Mac</h2>
+        <form></form>
         <Table>
           <TableHead>
             <TableRow>
