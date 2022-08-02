@@ -2,7 +2,6 @@ import { Table, TableCell, TableHead, TableRow } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
 import { appleApi } from "../helpers/Const";
-import { AdminContext } from "../Context/AdminProvider";
 
 function MacPage() {
   return (
