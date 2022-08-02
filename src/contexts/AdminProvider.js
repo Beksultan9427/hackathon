@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from "react";
 import { appleApi } from "../helpers/Const";
 
+<<<<<<< HEAD
 export const AdminContext = createContext();
 
 const reducer = (state, action) => {
@@ -47,6 +48,10 @@ function AdminProvider({ children }) {
     getMac,
   };
   return <AdminContext.Provider value={data}>{children}</AdminContext.Provider>;
+=======
+function AdminProvider({ children }) {
+  return <div>{children}</div>;
+>>>>>>> 903fcba5ab45793e5978e7b7a522463b8b646420
 }
 
 export default AdminProvider;
