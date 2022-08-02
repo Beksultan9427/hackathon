@@ -12,20 +12,20 @@ import ClientProvider from "./contexts/ClientProvider";
 function Navigation() {
   return (
     <div>
-      {/* <ClientProvider>
-        <AdminProvider> */}
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/mac" element={<MacPage />} />
-          <Route path="/admin/add" element={<AdminAddPage />} />
-          <Route path="/admin/" element={<AdminPage />} />
-          <Route path="/admin/edit/:id" element={<AdminEditPage />} />
-        </Routes>
-      </BrowserRouter>
-      {/* </AdminProvider>
-      </ClientProvider> */}
+      <ClientProvider>
+        <AdminProvider>
+          <BrowserRouter>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/mac" element={<MacPage />} />
+              <Route path="/admin/add" element={<AdminAddPage />} />
+              <Route path="/admin/" element={<AdminPage />} />
+              <Route path="/admin/edit/:id" element={<AdminEditPage />} />
+            </Routes>
+          </BrowserRouter>
+        </AdminProvider>
+      </ClientProvider>
     </div>
   );
 }
