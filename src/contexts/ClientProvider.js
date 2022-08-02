@@ -6,7 +6,7 @@ const reducer = (state, action) => {
   if (action.type === "GET_PHONS") {
     return {
       ...state,
-      watches: action.payload,
+      phones: action.payload,
     };
   }
 
