@@ -2,31 +2,31 @@ import React from "react";
 import { appleApi } from "../helpers/Const";
 
 export const ClientContext = React.createContext();
+
 const reducer = (state, action) => {
-  if (action.type === "GET_PHONS") {
+  if (action.type === "GET_APPLE") {
     return {
       ...state,
-      watches: action.payload,
+      apple: action.payload,
     };
   }
-
   return state;
 };
 
 function ClientProvider({ children }) {
   const [state, dispatch] = React.useReducer(reducer, {
-    phones: [],
+    apple: [],
   });
 
   const [searchWord, setSearchWord] = React.useState("");
 
-  const [filterByPrice, setFilterByPrice] = React.useState([0, 999999]);
-  const [minMax, setMinMax] = React.useState([0, 999999]);
+  const [filterByPrice, setFilterByPrice] = React.useState([0, 5000]);
+  const [minMax, setMinMax] = React.useState([0, 5000]);
   const limit = 3;
   const [pagesCount, setPagesCount] = React.useState(1);
   const [currentPage, setCurrentPage] = React.useState(1);
 
-  const getPhones = () => {
+  const getApple = () => {
     fetch(
       `${appleApi}?q=${searchWord}&price_gte=${filterByPrice[0]}&price_lte=${filterByPrice[1]}
       &_limit=${limit}&_page=${currentPage}`
@@ -38,14 +38,14 @@ function ClientProvider({ children }) {
       })
       .then((data) => {
         let action = {
-          type: "GET_PHONS",
+          type: "GET_APPLE",
           payload: data,
         };
         dispatch(action);
       });
   };
 
-  const getPricer = () => {
+  const getPrice = () => {
     fetch(appleApi)
       .then((res) => res.json())
       .then((data) => {
@@ -58,13 +58,13 @@ function ClientProvider({ children }) {
   };
 
   const data = {
-    phones: state.phones,
+    apple: state.apple,
     searchWord,
     filterByPrice,
     pagesCount,
     currentPage,
     minMax,
-    getPhones,
+    getApple,
     setSearchWord,
     setFilterByPrice,
     setCurrentPage,

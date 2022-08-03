@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { Link } from "react-router-dom";
 
 const pages = ["Mac", "Pricing", "Blog"];
 const settings = ["Admin", "Client", "Basket"];
@@ -54,7 +55,9 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            <Link className="navbar-link" to="/">
+              LOGO
+            </Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -109,7 +112,9 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            <Link className="navbar-link" to="/">
+              LOGO
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (

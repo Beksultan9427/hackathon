@@ -1,3 +1,18 @@
 {
-  "apple": []
+  "apple": [
+    {
+      "name": "Apple Iphone 13 Pro",
+      "year": "2021-09-21",
+      "price": "1400",
+      "photo": "https://www.istore.kg/media/products/iphone-13-pro-max-green-select.webp",
+      "id": 1
+    },
+    {
+      "name": "asd",
+      "year": "0002-02-12",
+      "price": "12",
+      "photo": "https://login.kg/image/cache/catalog/new/Phones/Apple/IPhone%2013/Pro/4-500x500.jpg",
+      "id": 2
+    }
+  ]
 }
