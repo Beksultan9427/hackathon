@@ -9,6 +9,7 @@ function AdminEditPage() {
 
   const { id } = useParams();
   const navigate = useNavigate();
+  console.log(appleToEdit);
 
   const [name, setName] = useState("");
   const [year, setYear] = useState("");
@@ -23,7 +24,7 @@ function AdminEditPage() {
       photo,
       id,
     };
-    for (let i in editApple[i]) {
+    for (let i in editApple) {
       if (typeof editApple[i] === "string") {
         if (!editApple[i].trim) {
           alert("Заполните поля");
@@ -72,7 +73,7 @@ function AdminEditPage() {
           />
           <TextField
             value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={(e) => setPrice(parseInt(e.target.value))}
             label="Цена"
             variant="standard"
             type="number"

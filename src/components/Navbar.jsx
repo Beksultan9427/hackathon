@@ -21,7 +21,7 @@ const pages = [
   <Link className="navbar-link" to="/admin/add">
     ADD
   </Link>,
-  <Link className="navbar-link" to="">
+  <Link className="navbar-link" to="/basket">
     BASKET
   </Link>,
 ];

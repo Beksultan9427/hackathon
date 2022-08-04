@@ -40,7 +40,7 @@ function AdminPage() {
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.year}</TableCell>
-                <TableCell>{item.price}</TableCell>
+                <TableCell>{item.price} $</TableCell>
                 <TableCell>
                   <img width={100} src={item.photo} alt="" />
                 </TableCell>

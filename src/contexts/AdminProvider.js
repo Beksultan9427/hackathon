@@ -13,7 +13,7 @@ const reducer = (state, action) => {
   if (action.type === "GET_APPLE_TO_EDIT") {
     return {
       ...state,
-      apple: action.payload,
+      appleToEdit: action.payload,
     };
   }
   return state;

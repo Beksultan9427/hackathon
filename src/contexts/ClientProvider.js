@@ -64,6 +64,7 @@ function ClientProvider({ children }) {
     pagesCount,
     currentPage,
     minMax,
+
     getApple,
     setSearchWord,
     setFilterByPrice,

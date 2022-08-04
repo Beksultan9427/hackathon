@@ -55,7 +55,7 @@ function AdminAddPage() {
           />
           <TextField
             value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={(e) => setPrice(parseInt(e.target.value))}
             label="Цена"
             variant="standard"
             type="number"

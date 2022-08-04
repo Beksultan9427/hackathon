@@ -3,6 +3,17 @@
   padding: 0;
 }
 
+.css-19r6kue-MuiContainer-root {
+  width: 100%;
+  margin-left: auto;
+  background-color: rgb(28, 27, 27);
+  box-sizing: border-box;
+  margin-right: auto;
+  display: block;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 .admin-add-page,
 .admin-edit-page {
   padding-top: 50px;
@@ -30,6 +41,7 @@ a {
 
 .main-page {
   padding: 30px 0;
+  /* background: dimgray; */
 }
 
 .main-page h2 {

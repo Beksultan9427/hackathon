@@ -1,18 +1,25 @@
 {
   "apple": [
     {
-      "name": "Apple Iphone 13 Pro",
-      "year": "2021-09-21",
-      "price": "1400",
+      "name": "Casio Ltd",
+      "year": "0222-02-22",
+      "price": 222,
       "photo": "https://www.istore.kg/media/products/iphone-13-pro-max-green-select.webp",
-      "id": 1
+      "id": 2
     },
     {
-      "name": "asd",
-      "year": "0002-02-12",
-      "price": "12",
-      "photo": "https://login.kg/image/cache/catalog/new/Phones/Apple/IPhone%2013/Pro/4-500x500.jpg",
-      "id": 2
+      "name": "1234",
+      "year": "1212-12-21",
+      "price": 1212,
+      "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-iphone-12-pro-graphite-2020?wid=2000&hei=1897&fmt=jpeg&qlt=95&.v=1635202842000",
+      "id": 3
+    },
+    {
+      "name": "Apple Iphone 13",
+      "year": "2021-09-21",
+      "price": 1300,
+      "photo": "https://telefon.kg/image/cache/catalog/new/Phones/Apple/IPhone%2013/mini/3-500x500.jpg",
+      "id": 4
     }
   ]
 }
