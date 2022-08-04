@@ -9,6 +9,18 @@ const reducer = (state, action) => {
       phones: action.payload,
     };
   }
+  if (action.type === "GET_PHONS_FROM_BASKET") {
+    return {
+      ...state,
+      basketPhones: action.payload,
+    };
+  }
+  if (action.type === "GET_BASKET_COUNT") {
+    return {
+      ...state,
+      basketCount: action.payload,
+    };
+  }
 
   return state;
 };
@@ -45,6 +57,51 @@ function ClientProvider({ children }) {
       });
   };
 
+  const addPhonesToBasket = (phones) => {
+    let basket = JSON.parse(localStorage.getItem("basket"));
+    if (!basket) {
+      basket = {
+        totalPrice: 0,
+        products: [],
+      };
+    }
+    let phonesToBasket = {
+      ...phones,
+      count: 1,
+      subPrice: phones.price,
+    };
+
+    let chek = basket.products.find((item) => {
+      return item.id === phonesToBasket.id;
+    });
+    if (chek) {
+      basket.products = basket.products.map((item) => {
+        if (item.id === phonesToBasket.id) {
+          item.count++;
+          item.subPrice = item.count * item.price;
+          return item;
+        }
+        return item;
+      });
+    } else {
+      basket.products.push(phonesToBasket);
+    }
+    basket.totalPrice = basket.products.reduce((prev, item) => {
+      return prev + item.subPrice;
+    }, 0);
+    localStorage.setItem("basket", JSON.stringify(basket));
+    getBasketCount();
+  };
+
+  const getPhonesFromBasket = () => {
+    let basket = JSON.parse(localStorage.getItem("basket"));
+    let action = {
+      type: "GET_PHONES_FROM_BASKET",
+      payload: basket,
+    };
+    dispatch(action);
+  };
+
   const getPricer = () => {
     fetch(appleApi)
       .then((res) => res.json())
@@ -57,17 +114,39 @@ function ClientProvider({ children }) {
       });
   };
 
+  const getBasketCount = () => {
+    let basket = JSON.parse(localStorage.getItem("basket"));
+    if (!basket) {
+      basket = {
+        products: [],
+      };
+    }
+    let action = {
+      type: "GET_BASKET_COUNT",
+      payload: basket.products.length,
+    };
+    dispatch(action);
+  };
+  React.useEffect(() => {
+    getPricer();
+    getBasketCount();
+  }, []);
+
   const data = {
     phones: state.phones,
     searchWord,
     filterByPrice,
     pagesCount,
     currentPage,
+    basketPhones: state.basketPhones,
     minMax,
+    basketCount: state.basketCount,
     getPhones,
     setSearchWord,
     setFilterByPrice,
     setCurrentPage,
+    addPhonesToBasket,
+    getPhonesFromBasket,
   };
   return (
     <ClientContext.Provider value={data}>{children}</ClientContext.Provider>

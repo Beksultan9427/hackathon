@@ -86,6 +86,15 @@ function MainPage() {
           />
         </div>
       </Container>
+      <div className="bc">
+        <div class="main">
+          <div class="d1"></div>
+          <div class="d2"></div>
+          <div class="d3"></div>
+          <div class="d4"></div>
+        </div>
+      </div>
+      ;
     </div>
   );
 }
