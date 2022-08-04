@@ -14,7 +14,17 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 
-const pages = ["Mac", "Pricing", "Blog"];
+const pages = [
+  <Link className="navbar-link" to="/admin">
+    ADMIN
+  </Link>,
+  <Link className="navbar-link" to="/admin/add">
+    ADD
+  </Link>,
+  <Link className="navbar-link" to="">
+    BASKET
+  </Link>,
+];
 const settings = ["Admin", "Client", "Basket"];
 
 const Navbar = () => {
