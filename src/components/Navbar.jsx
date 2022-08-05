@@ -15,17 +15,28 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 
 const pages = [
-  <Link className="navbar-link" to="/admin">
-    ADMIN
+  "Mac",
+  "iPad",
+  <Link className="navbar-link" to="/main">
+    iPhone
   </Link>,
-  <Link className="navbar-link" to="/admin/add">
-    ADD
+  "Watch",
+  "AirPods",
+];
+const settings = [
+  <Link className="navbar-link" to="/admin">
+    Admin
+  </Link>,
+  <Link className="navbar-link" to="/main">
+    Client
   </Link>,
   <Link className="navbar-link" to="/basket">
-    BASKET
+    Basket
+  </Link>,
+  <Link className="navbar-link" to="/admin/add">
+    Add
   </Link>,
 ];
-const settings = ["Admin", "Client", "Basket"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -65,8 +76,12 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            <Link className="navbar-link" to="/">
-              LOGO
+            <Link className="navbar-link" to="/main">
+              <img
+                width={15}
+                src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Apple_logo_grey.svg"
+                alt=""
+              />
             </Link>
           </Typography>
 
@@ -99,8 +114,11 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page, index) => (
+                <MenuItem
+                  key={page + index + "hello"}
+                  onClick={handleCloseNavMenu}
+                >
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -122,14 +140,18 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            <Link className="navbar-link" to="/">
-              LOGO
+            <Link className="navbar-link" to="/main">
+              <img
+                width={15}
+                src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Apple_logo_grey.svg"
+                alt=""
+              />
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button
-                key={page}
+                key={page + "page"}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
@@ -160,8 +182,8 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              {settings.map((setting, ind) => (
+                <MenuItem key={setting + ind} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

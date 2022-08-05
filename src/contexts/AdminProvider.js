@@ -16,6 +16,12 @@ const reducer = (state, action) => {
       appleToEdit: action.payload,
     };
   }
+  if (action.type === "GET_MAC") {
+    return {
+      ...state,
+      mac: action.payload,
+    };
+  }
   return state;
 };
 
@@ -34,6 +40,19 @@ function AdminProvider({ children }) {
     });
   };
   // !
+
+  // const getMac = () => {
+  //   fetch(`${appleApi}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       let mac = data.filter((item) => item.type === "mac");
+  //       let action = {
+  //         type: "GET_MAC",
+  //         payload: mac,
+  //       };
+  //       dispatch(action);
+  //     });
+  // };
 
   const getApple = () => {
     fetch(appleApi)
@@ -82,11 +101,13 @@ function AdminProvider({ children }) {
   const data = {
     apple: state.apple,
     appleToEdit: state.appleToEdit,
+    // mac,
     sendNewApple,
     getApple,
     deleteApple,
     getAppleToEdit,
     saveEditApple,
+    // getMac,
   };
   return <AdminContext.Provider value={data}>{children}</AdminContext.Provider>;
 }

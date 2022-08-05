@@ -1,25 +1,67 @@
 {
   "apple": [
     {
-      "name": "Casio Ltd",
-      "year": "0222-02-22",
-      "price": 222,
-      "photo": "https://www.istore.kg/media/products/iphone-13-pro-max-green-select.webp",
+      "name": "IPhone 13 Pro",
+      "year": "2021-09-21",
+      "price": 1099,
+      "photo": "https://login.kg/image/cache/catalog/new/Phones/Apple/IPhone%2013/Pro/1-500x500.jpg",
+      "id": 1
+    },
+    {
+      "name": "iPhone 12 Pro",
+      "year": "2020-09-21",
+      "price": 999,
+      "photo": "https://login.kg/image/cache/catalog/new/Phones/Apple/iPhone%2012%20Pro/1-500x500.jpg",
       "id": 2
     },
     {
-      "name": "1234",
-      "year": "1212-12-21",
-      "price": 1212,
-      "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-iphone-12-pro-graphite-2020?wid=2000&hei=1897&fmt=jpeg&qlt=95&.v=1635202842000",
+      "name": "iPhone 11 Pro",
+      "year": "2019-09-21",
+      "price": 899,
+      "photo": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-iphone-11-pro-silver-2019?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1611101533000",
       "id": 3
     },
     {
-      "name": "Apple Iphone 13",
-      "year": "2021-09-21",
-      "price": 1300,
-      "photo": "https://telefon.kg/image/cache/catalog/new/Phones/Apple/IPhone%2013/mini/3-500x500.jpg",
+      "name": "iPhone X",
+      "year": "2018-09-21",
+      "price": 799,
+      "photo": "https://cdn.alloallo.media/catalog/product/apple/iphone/iphone-x/iphone-x-space-gray.jpg",
       "id": 4
+    },
+    {
+      "name": "iPhone 8 Plus",
+      "year": "2018-09-21",
+      "price": 699,
+      "photo": "https://m.media-amazon.com/images/I/61K5-sw7yDL._AC_SL1169_.jpg",
+      "id": 5
+    },
+    {
+      "name": "iPhone 7 Plus",
+      "year": "2017-09-21",
+      "price": 599,
+      "photo": "https://telefon.kg/image/cache/catalog/Products/Phones/Apple/IPhone%207%20Plus/rose/1-500x500.jpg",
+      "id": 6
+    },
+    {
+      "name": "iPhone 6 Plus",
+      "year": "2016-09-21",
+      "price": 499,
+      "photo": "https://object.pscloud.io/cms/cms/Photo/img_0_77_691_1.jpg",
+      "id": 7
+    },
+    {
+      "name": "iPhone 5s",
+      "year": "2015-09-21",
+      "price": 399,
+      "photo": "https://object.pscloud.io/cms/cms/Photo/img_0_77_902_1.jpg",
+      "id": 8
+    },
+    {
+      "name": "iPhone 4s",
+      "year": "2014-09-21",
+      "price": 299,
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0x3H65behUMd0NA4LJptdmjhvYn3C5c90CpwMFPoy9CDlMA382ScbfIg18vHQUJooD10&usqp=CAU",
+      "id": 9
     }
   ]
 }

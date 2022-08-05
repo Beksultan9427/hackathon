@@ -6,7 +6,9 @@ import {
   Slider,
   Typography,
   Button,
+  Pagination,
 } from "@mui/material";
+
 import React, { useContext, useEffect } from "react";
 import { ClientContext } from "../contexts/ClientProvider";
 function MainPage() {
@@ -17,20 +19,24 @@ function MainPage() {
     getApple,
     apple,
     addAppleToBasket,
+    pagesCount,
+    setCurrentPage,
+    currentPage,
   } = useContext(ClientContext);
 
   useEffect(() => {
     getApple();
-  }, [filterByPrice]);
+  }, [filterByPrice, currentPage]);
   return (
     <div className="main-page">
       <Container>
         <h2>Весь каталог товаров</h2>
 
-        {/* Фильрация по цене */}
+        {/* Фильтрация по цене */}
         <div className="filter-block">
           <h4>Фильтрация по цене:</h4>
           <Slider
+            sx={{ color: "gray" }}
             min={minMax[0]}
             max={minMax[1]}
             valueLabelDisplay="auto"
@@ -42,8 +48,8 @@ function MainPage() {
         <div className="products">
           {apple.map((item) => (
             <Card
-              key={item.id}
-              className="products-card"
+              key={item.id + "apple"}
+              className="product-card"
               sx={{ width: "280px" }}
             >
               <CardMedia component="img" height={280} image={item.photo} />
@@ -71,11 +77,22 @@ function MainPage() {
                   </li>
                 </ul>
               </CardContent>
-              <Button onClick={() => addAppleToBasket(item)} variant="outlined">
+              <Button
+                onClick={() => addAppleToBasket(item)}
+                variant="outlined"
+                shape="rounded"
+              >
                 Добавить в корзину
               </Button>
             </Card>
           ))}
+        </div>
+        <div className="pagination-block">
+          <Pagination
+            onChange={(_, newValue) => setCurrentPage(newValue)}
+            count={pagesCount}
+            shape="rounded"
+          />
         </div>
       </Container>
     </div>

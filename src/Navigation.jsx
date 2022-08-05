@@ -9,6 +9,7 @@ import AdminEditPage from "./pages/AdminEditPage";
 import AdminProvider from "./contexts/AdminProvider";
 import ClientProvider from "./contexts/ClientProvider";
 import BasketPage from "./pages/BasketPage";
+import HomePage from "./pages/HomePage";
 
 function Navigation() {
   return (
@@ -18,7 +19,8 @@ function Navigation() {
           <BrowserRouter>
             <Navbar />
             <Routes>
-              <Route path="/" element={<MainPage />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/main" element={<MainPage />} />
               <Route path="/mac" element={<MacPage />} />
               <Route path="/admin/add" element={<AdminAddPage />} />
               <Route path="/admin" element={<AdminPage />} />
