@@ -14,39 +14,52 @@ import { ClientContext } from "../contexts/ClientProvider";
 
 function MainPage() {
   const {
-    getPhones,
-    phones,
-    filterByPrice,
+    getApple,
     setFilterByPrice,
-    pagesCount,
+    filterByPrice,
+    apple,
+    addAppleToBasket,
+    minMax,
     setCurrentPage,
     currentPage,
-    minMax,
+    pagesCount,
   } = React.useContext(ClientContext);
 
   React.useEffect(() => {
-    getPhones();
+    getApple();
   }, [filterByPrice, currentPage]);
-
+  console.log(filterByPrice);
   return (
-    <div className="main-page">
+    <div className="main-page bac">
       <Container>
-        <h2>Весь каталог Apple</h2>
+        <h2>Весь каталог товаров</h2>
         <div className="filter-block">
-          <h4>Фильтрация по цене</h4>
+          <h4>Фильтрация по цене:</h4>
           <Slider
-            max={minMax[1]}
+            sx={{ color: "black" }}
+            className="slider"
             min={minMax[0]}
+            max={minMax[1]}
             valueLabelDisplay="auto"
             value={filterByPrice}
-            onChange={(e, newValue) => setFilterByPrice(newValue)}
+            onChange={(_, newValue) => setFilterByPrice(newValue)}
           />
         </div>
+
         <div className="products">
-          {phones.map((item) => (
-            <Card key={item.id} className="product-card">
-              <CardMedia component="img" height={140} image={item.photo} />
-              <CardContent>
+          {apple.map((item) => (
+            <Card
+              key={item.id}
+              className="products-card"
+              sx={{ width: "280px" }}
+            >
+              <CardMedia
+                component="img"
+                height={280}
+                image={item.photo}
+                sx={{ background: "pink" }}
+              />
+              <CardContent sx={{ background: "pink" }}>
                 <Typography
                   className="product-card-title"
                   gutterBottom
@@ -57,23 +70,33 @@ function MainPage() {
                 </Typography>
                 <ul className="product-card-ul">
                   <li>
-                    <span>Бренд:</span>
-                    <span>{item.brand}</span>
+                    <span>Название:</span>
+                    <span>{item.name}</span>
                   </li>
                   <li>
                     <span>Дата выпуска:</span>
                     <span>{item.year}</span>
                   </li>
                   <li>
-                    <span>Страна производства:</span>
-                    <span>{item.country}</span>
-                  </li>
-                  <li>
                     <span>Цена:</span>
-                    <span>{item.price} сом</span>
+                    <span>{item.price} $</span>
                   </li>
                 </ul>
               </CardContent>
+              <Button
+                onClick={() => addAppleToBasket(item)}
+                variant="outlined"
+                sx={{
+                  color: "black",
+                  fontWeight: "bold",
+                  borderColor: "black",
+                  background: "pink",
+                  height: "40px",
+                  width: "280px",
+                }}
+              >
+                Добавить в корзину
+              </Button>
             </Card>
           ))}
         </div>
@@ -83,18 +106,10 @@ function MainPage() {
             count={pagesCount}
             variant="outlined"
             shape="rounded"
+            sx={{ color: "pink" }}
           />
         </div>
       </Container>
-      <div className="bc">
-        <div class="main">
-          <div class="d1"></div>
-          <div class="d2"></div>
-          <div class="d3"></div>
-          <div class="d4"></div>
-        </div>
-      </div>
-      ;
     </div>
   );
 }

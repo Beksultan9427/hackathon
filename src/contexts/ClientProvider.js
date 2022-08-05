@@ -2,17 +2,18 @@ import React from "react";
 import { appleApi } from "../helpers/Const";
 
 export const ClientContext = React.createContext();
+
 const reducer = (state, action) => {
-  if (action.type === "GET_PHONS") {
+  if (action.type === "GET_APPLE") {
     return {
       ...state,
-      phones: action.payload,
+      apple: action.payload,
     };
   }
-  if (action.type === "GET_PHONS_FROM_BASKET") {
+  if (action.type === "GET_APPLE_FROM_BASKET") {
     return {
       ...state,
-      basketPhones: action.payload,
+      basketApple: action.payload,
     };
   }
   if (action.type === "GET_BASKET_COUNT") {
@@ -21,24 +22,23 @@ const reducer = (state, action) => {
       basketCount: action.payload,
     };
   }
-
   return state;
 };
 
 function ClientProvider({ children }) {
   const [state, dispatch] = React.useReducer(reducer, {
-    phones: [],
+    apple: [],
   });
 
   const [searchWord, setSearchWord] = React.useState("");
 
-  const [filterByPrice, setFilterByPrice] = React.useState([0, 999999]);
-  const [minMax, setMinMax] = React.useState([0, 999999]);
+  const [filterByPrice, setFilterByPrice] = React.useState([0, 5000]);
+  const [minMax, setMinMax] = React.useState([0, 5000]);
   const limit = 3;
   const [pagesCount, setPagesCount] = React.useState(1);
   const [currentPage, setCurrentPage] = React.useState(1);
 
-  const getPhones = () => {
+  const getApple = () => {
     fetch(
       `${appleApi}?q=${searchWord}&price_gte=${filterByPrice[0]}&price_lte=${filterByPrice[1]}
       &_limit=${limit}&_page=${currentPage}`
@@ -50,14 +50,14 @@ function ClientProvider({ children }) {
       })
       .then((data) => {
         let action = {
-          type: "GET_PHONS",
+          type: "GET_APPLE",
           payload: data,
         };
         dispatch(action);
       });
   };
 
-  const addPhonesToBasket = (phones) => {
+  const addAppleToBasket = (Apple) => {
     let basket = JSON.parse(localStorage.getItem("basket"));
     if (!basket) {
       basket = {
@@ -65,18 +65,18 @@ function ClientProvider({ children }) {
         products: [],
       };
     }
-    let phonesToBasket = {
-      ...phones,
+    let AppleToBasket = {
+      ...Apple,
       count: 1,
-      subPrice: phones.price,
+      subPrice: Apple.price,
     };
 
     let chek = basket.products.find((item) => {
-      return item.id === phonesToBasket.id;
+      return item.id === AppleToBasket.id;
     });
     if (chek) {
       basket.products = basket.products.map((item) => {
-        if (item.id === phonesToBasket.id) {
+        if (item.id === AppleToBasket.id) {
           item.count++;
           item.subPrice = item.count * item.price;
           return item;
@@ -84,7 +84,7 @@ function ClientProvider({ children }) {
         return item;
       });
     } else {
-      basket.products.push(phonesToBasket);
+      basket.products.push(AppleToBasket);
     }
     basket.totalPrice = basket.products.reduce((prev, item) => {
       return prev + item.subPrice;
@@ -93,10 +93,10 @@ function ClientProvider({ children }) {
     getBasketCount();
   };
 
-  const getPhonesFromBasket = () => {
+  const getAppleFromBasket = () => {
     let basket = JSON.parse(localStorage.getItem("basket"));
     let action = {
-      type: "GET_PHONES_FROM_BASKET",
+      type: "GET_APPLE_FROM_BASKET",
       payload: basket,
     };
     dispatch(action);
@@ -133,20 +133,20 @@ function ClientProvider({ children }) {
   }, []);
 
   const data = {
-    phones: state.phones,
+    apple: state.apple,
     searchWord,
     filterByPrice,
     pagesCount,
     currentPage,
-    basketPhones: state.basketPhones,
+    basketApple: state.basketApple,
     minMax,
     basketCount: state.basketCount,
-    getPhones,
+    getApple,
     setSearchWord,
     setFilterByPrice,
     setCurrentPage,
-    addPhonesToBasket,
-    getPhonesFromBasket,
+    addAppleToBasket,
+    getAppleFromBasket,
   };
   return (
     <ClientContext.Provider value={data}>{children}</ClientContext.Provider>

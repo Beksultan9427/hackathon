@@ -11,13 +11,13 @@ import {
 import { ClientContext } from "../contexts/ClientProvider";
 
 function BasketPage() {
-  const { basketPhones, getPhonesFromBasket } = React.useContext(ClientContext);
+  const { basketApple, getAppleFromBasket } = React.useContext(ClientContext);
 
   React.useEffect(() => {
-    getPhonesFromBasket();
+    getAppleFromBasket();
   }, []);
 
-  if (!basketPhones) {
+  if (!basketApple) {
     return (
       <div className="basket-page">
         <Container>
@@ -42,13 +42,13 @@ function BasketPage() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {basketPhones.products.map((item) => (
+            {basketApple.products.map((item) => (
               <TableRow key={item.id}>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>
                   <img width={60} src={item.photo} alt="" />
                 </TableCell>
-                <TableCell>{item.price} сом</TableCell>
+                <TableCell>{item.price} $</TableCell>
                 <TableCell>{item.count}</TableCell>
                 <TableCell>{item.subPrice}</TableCell>
               </TableRow>
@@ -57,7 +57,7 @@ function BasketPage() {
           <TableFooter>
             <TableRow>
               <TableCell colSpan={4}>Итогоавя сумма:</TableCell>
-              <TableCell colSpan={1}>{basketPhones.totalPrice} сом</TableCell>
+              <TableCell colSpan={1}>{basketApple.totalPrice} $</TableCell>
             </TableRow>
           </TableFooter>
         </Table>

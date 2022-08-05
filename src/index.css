@@ -1,115 +1,131 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #f3f6f7;
 }
-.main {
-  height: 100vh;
-  width: 100vw;
-  position: relative;
+
+.css-19r6kue-MuiContainer-root {
+  width: 100%;
+  margin-left: auto;
+  background-color: rgb(28, 27, 27);
+  box-sizing: border-box;
+  margin-right: auto;
+  display: block;
+  padding-left: 16px;
+  padding-right: 16px;
 }
-.d1 {
+
+.admin-add-page,
+.admin-edit-page {
+  padding-top: 50px;
+}
+.admin-add-page form,
+.admin-edit-page form {
+  display: flex;
+  flex-direction: column;
+}
+.admin-add-page button,
+.admin-edit-page button {
+  margin-top: 20px;
+}
+.navbar-link {
+  margin: 0 10px;
+}
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+.main-page {
+  padding: 30px 0;
+  /* background: dimgray; */
+}
+
+.main-page h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+}
+.product-card {
+  width: 30%;
+}
+.product-card img {
+  /* !чтобы картинка не теряла форму */
+  object-fit: contain;
+}
+.product-card-ul {
+  list-style-type: none;
+}
+.product-card-ul li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+.product-card-ul span:nth-child(2) {
+  /* !обратились ко вторым спанам */
+  font-weight: 700;
+}
+.product-card-title {
+  text-align: center;
+}
+.filter-block {
+  width: 250px;
+  margin-bottom: 40px;
+}
+.filter-block h4 {
+  text-decoration: underline;
+}
+.main-page .bac {
+  background: rgb(0, 0, 0);
+}
+
+.filter-block {
+  color: rgb(10, 1, 19);
+}
+.slider {
+  color: rgb(219, 45, 83);
+}
+
+@import url("https://fonts.googleapis.com/css?family=Exo:400,700");
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: "Exo", sans-serif;
+}
+
+.context {
+  width: 100%;
   position: absolute;
-  background-image: url(https://i.artfile.ru/1920x1080_259494_[www.ArtFile.ru].jpg);
-  background-size: 2700px 1500px;
-
-  height: 30vh;
-  width: 15vw;
-
-  background-position: 0 50%;
-
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  animation: dd1 10s 1, dd12 5s 1;
-  animation-delay: 4s, 14s;
-}
-.d2 {
-  position: absolute;
-  background-image: url(https://i.artfile.ru/1920x1080_259494_[www.ArtFile.ru].jpg);
-  background-size: 2700px 1500px;
-
-  height: 50vh;
-  width: 25vw;
-
-  background-position: -10vw 50%;
-  left: 10vw;
-
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-  animation: dd2 5s 2;
-  animation-delay: 4s;
-}
-.d3 {
-  position: absolute;
-  background-image: url(https://i.artfile.ru/1920x1080_259494_[www.ArtFile.ru].jpg);
-  background-size: 2700px 1500px;
-  overflow: hidden;
-
-  height: 100vh;
-  width: 40vw;
-  left: 25vw;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8);
-  background-position: -35vw 50%;
-
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  animation: dd3 5s 2;
-  animation-delay: 4s;
-}
-.d4 {
-  position: absolute;
-  overflow: hidden;
-  background-image: url(https://i.artfile.ru/1920x1080_259494_[www.ArtFile.ru].jpg);
-  background-size: 2700px 1500px;
-
-  height: 80vh;
-  width: 25vw;
-  left: 60vw;
-  background-position: -70vw 50%;
-
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-  animation: dd4 5s 2;
-  animation-delay: 4s;
+  top: 50vh;
 }
 
-@keyframes dd1 {
-  0% {
-  }
-  50% {
-    width: 95vw;
+.context h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 50px;
+}
+.main-page {
+  background-color: rgb(245, 245, 245);
+}
+
+@media all and (max-width: 768px) {
+  .product-card {
+    width: 48%;
   }
 }
-@keyframes dd12 {
-  0% {
+@media all and (max-width: 575px) {
+  .product-card {
+    width: 65%;
   }
-  50% {
-    background-position: Calc(0vw - 40px) 50%;
-  }
-}
-@keyframes dd2 {
-  0% {
-  }
-  50% {
-    background-position: Calc(-10vw - 40px) 50%;
-  }
-}
-@keyframes dd3 {
-  0% {
-  }
-  50% {
-    background-position: Calc(-35vw - 40px) 50%;
-  }
-}
-@keyframes dd4 {
-  0% {
-  }
-  50% {
-    background-position: Calc(-70vw - 40px) 50%;
+  .products {
+    justify-content: center;
   }
 }

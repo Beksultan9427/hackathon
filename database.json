@@ -1,3 +1,11 @@
 {
-  "apple": []
+  "apple": [
+    {
+      "name": "pac",
+      "year": "2022-08-27",
+      "price": 860,
+      "photo": "https://istore.kg/media/products/12-pro-max-gold.webp",
+      "id": 3
+    }
+  ]
 }

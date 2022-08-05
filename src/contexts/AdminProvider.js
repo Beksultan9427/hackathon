@@ -4,47 +4,88 @@ import { appleApi } from "../helpers/Const";
 export const AdminContext = createContext();
 
 const reducer = (state, action) => {
-  if (action.type === "GET_MAC") {
+  if (action.type === "GET_APPLE") {
     return {
       ...state,
-      mac: action.payload,
+      apple: action.payload,
     };
   }
+  if (action.type === "GET_APPLE_TO_EDIT") {
+    return {
+      ...state,
+      appleToEdit: action.payload,
+    };
+  }
+  return state;
 };
 
 function AdminProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, {
-    mac: [],
-    macToEdit: null,
+    apple: [],
+    appleToEdit: null,
   });
 
-  // ! ADD
-  const sendNewMac = (newMac) => {
+  const sendNewApple = (newApple) => {
     fetch(appleApi, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newMac),
+      body: JSON.stringify(newApple),
     });
   };
   // !
 
-  const getMac = () => {
+  const getApple = () => {
     fetch(appleApi)
       .then((res) => res.json())
       .then((data) => {
         let action = {
-          type: "GET_MAC",
+          type: "GET_APPLE",
           payload: data,
         };
         dispatch(action);
       });
   };
 
+  // ! delete
+  const deleteApple = (id) => {
+    fetch(`${appleApi}/${id}`, {
+      method: "DELETE",
+    }).then(() => getApple());
+  };
+  // !
+
+  // ! update edit
+  const getAppleToEdit = (id) => {
+    fetch(`${appleApi}/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        let action = {
+          type: "GET_APPLE_TO_EDIT",
+          payload: data,
+        };
+        dispatch(action);
+      });
+  };
+
+  // ! update save
+
+  const saveEditApple = (editApple) => {
+    fetch(`${appleApi}/${editApple.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editApple),
+    });
+  };
   const data = {
-    mac: state.mac,
-    macToEdit: state.macToEdit,
-    sendNewMac,
-    getMac,
+    apple: state.apple,
+    appleToEdit: state.appleToEdit,
+    sendNewApple,
+    getApple,
+    deleteApple,
+    getAppleToEdit,
+    saveEditApple,
   };
   return <AdminContext.Provider value={data}>{children}</AdminContext.Provider>;
 }
